@@ -1,0 +1,81 @@
+<html>
+ <head>
+ <title>Multiplication Table</title>
+ </head>
+ <body style="text-align: center; background-color: #fcfcfc;">
+ <h1>Multiplication Table</h1>
+ <h1>42251 Smita Naik </h1>
+
+
+ <label for="Given">
+ Enter a number:
+ </label>
+ <input type="number" id="Given">
+ <br><br>
+ <button onclick="tablE()">Click Here For the Table</button>
+ <p> Multiplication Table using For Loop: <span id="displayf"></span>
+ </p>
+
+ 
+ <label for="Given">
+    Enter a number:
+    </label>
+ <input type="number" id="Given1">
+ <br><br>
+ <button onclick="tablW()">Click Here For the Table</button>
+ <p>
+ Multiplication Table using While Loop: <span id="displayw"></span>
+ </p>
+
+ 
+ <label for="Given">
+    Enter a number:
+    </label>
+ <input type="number" id="Given2">
+ <br><br>
+ <button onclick="tablD()">Click Here For the Table</button>
+ <p>
+ Multiplication Table using Do-While Loop: <span id="displayd"></span>
+ </p>
+
+
+ <script>
+      // Using For Loop
+      function tablE() 
+      {
+         let num = parseInt(document.getElementById("Given").value);
+         let sentence = "";
+         for (let i = 1; i <= 10; i++) {
+         let final = num * (i);
+         sentence += ` \n ${num} X ${i} = ${final} <br/>`;
+         }
+         document.getElementById("displayf").innerHTML = sentence
+      }
+
+      // Using While Loop
+      function tablW() 
+      {
+         var num = parseInt(document.getElementById("Given1").value);
+         var resultW = "";
+         var i = 1;
+         while (i <= 10) {
+         resultW += num + " x " + i + " = " + (num * i) + "<br>";
+         i++;
+         }
+         document.getElementById("displayw").innerHTML = resultW;
+      }
+
+      // Using do...while Loop
+      function tablD() {
+      var num = parseInt(document.getElementById("Given2").value);
+      var resultD = "";
+      var j = 1;
+      do {
+      resultD += num + " x " + j + " = " + (num * j) + "<br>";
+      j++;
+      } while (j <= 10);
+      document.getElementById("displayd").innerHTML = resultD;
+      }
+ </script>
+ </body>
+</html>

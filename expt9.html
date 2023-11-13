@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head> 
+<body style="text-align:center">
+    <h1>Student Information Form</h1>
+    <h4>Smita Naik 42251</h4>
+    <form id="studentForm" onsubmit="return validateForm()" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required>
+        <div id="nameError" class="error"></div><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required>
+        <div id="addressError" class="error"></div><br>
+
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" required>
+        <div id="cityError" class="error"></div><br>
+
+        <label for="state">State:</label><br>
+        <input type="text" id="state" name="state" required>
+        <div id="stateError" class="error"></div><br>
+
+        <label for="gender">Gender:</label><br>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+        <br>
+        <label for="mobile">Mobile Number:</label><br>
+        <input type="text" id="mobile" name="mobile" required>
+        <div id="mobileError" class="error"></div><br>
+
+        <label for="email">Email ID:</label><br>
+        <input type="email" id="email" name="email" required>
+        <div id="emailError" class="error"></div><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var gender = document.getElementById("gender").value;
+            var mobile = document.getElementById("mobile").value;
+            var email = document.getElementById("email").value;
+
+            var namePattern = /^[a-zA-Z\s]+$/;
+            var mobilePattern = /^\d{10}$/;
+            var emailPattern = /^\S+@\S+\.\S+$/;
+
+            var isValid = true;
+
+            if (!namePattern.test(name.trim())) {
+                document.getElementById("nameError").textContent = "Please enter a valid name";
+                isValid = false;
+            } else {
+                document.getElementById("nameError").textContent = "";
+            }
+
+            if (!namePattern.test(address.trim())) {
+                document.getElementById("addressError").textContent = "Please enter a valid address";
+                isValid = false;
+            } else {
+                document.getElementById("addressError").textContent = "";
+            }
+
+            if (!namePattern.test(city.trim())) {
+                document.getElementById("cityError").textContent = "Please enter a valid city";
+                isValid = false;
+            } else {
+                document.getElementById("cityError").textContent = "";
+            }
+
+            if (!namePattern.test(state.trim())) {
+                document.getElementById("stateError").textContent = "Please enter a valid state";
+                isValid = false;
+            } else {
+                document.getElementById("stateError").textContent = "";
+            }
+
+            if (!mobilePattern.test(mobile)) {
+                document.getElementById("mobileError").textContent = "Please enter a valid 10-digit mobile number";
+                isValid = false;
+            } else {
+                document.getElementById("mobileError").textContent = "";
+            }
+
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "Please enter a valid email address";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").textContent = "";
+            }
+
+            if (isValid) {
+                // Remove this line if you don't want to redirect
+                window.location.href = "expt9-2.html";
+            }
+
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
