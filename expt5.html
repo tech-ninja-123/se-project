@@ -1,52 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
- <head>
-    <title>Expt_5</title>
- </head>
- <body style="text-align:center">
- 
- <h1>Countdown Timer</h1>
- <h4>42251 Smita Naik</h4>
-
-
- <label for="end-date">Enter End Date and Time: </label>
- <input type="datetime-local" id="end-date" />
- <button id="start-timer">Start Timer</button>
- <p id="countdown"></p>
-
- <script>
- let countdownInterval;
- function startCountdown() 
- {
-    const endDateInput = document.getElementById("end-date");
-    const endDateValue = endDateInput.value;
-    if (endDateValue) 
-    {
-        const targetDate = new Date(endDateValue).getTime();
-        countdownInterval = setInterval(() => 
-        {
-            updateCountdown(targetDate);
-        }, 1000);
+<html>
+<script>
+    function countdown() {
+    var day = document.getElementById("day").value;
+    var month = document.getElementById("month").value;
+    var year = document.getElementById("year").value;
+    var time = document.getElementById("time").value;
+    if (day === "" || month === "" || year === "" || time === "") {
+        alert("Please provide values for all fields: Day, Month, Year, and Time");
+        return;
     }
- }
-
- function updateCountdown(targetDate) {
-    const currentTime = new Date().getTime();
-    const timeRemaining = targetDate - currentTime;
-    if (timeRemaining > 0) {
-        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-        const countdownElement = document.getElementById("countdown");
-        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    } 
-    else {
-        clearInterval(countdownInterval);
-        document.getElementById("countdown").innerHTML = "Expired";
+    const timeBlock = time.split(":");
+    console.log(timeBlock[0],timeBlock[1],timeBlock[2],typeof(timeBlock[0]))
+    if(timeBlock[0]===undefined||timeBlock[1]===undefined||timeBlock[2]===undefined){
+        alert("Please provide complete values of Time");
+        return;
     }
- }
- document.getElementById("start-timer").addEventListener("click", startCountdown);
- </script>
- </body>
+    var x = setInterval(function () {
+        var currentDate = new Date().getTime();
+        var countDownDate = new Date(year, month - 1, day, timeBlock[0], timeBlock[1], timeBlock[2]).getTime();
+        var timeLeft = countDownDate - currentDate;
+        var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("output").innerHTML = "Time Left : " + days + " Days " + hours + " Hours  " + minutes + " Minutes " + seconds + " Seconds ";
+
+        if (timeLeft <= 0) {
+            clearInterval(x);
+            document.getElementById("output").innerHTML = "Countdown Timer Expired";
+        }
+    }
+        , 500);
+}
+</script>
+<center>
+    <h1>Countdown Timer </h1>
+</center>
+<body>
+    <center>
+        <h2>Vansh Teppalwar</h2>
+        <h3>Roll No.: 42171</h3>
+        <hr>
+        <br>
+        Enter Day (DD): <input type="int" id="day"></inputtype>
+        <br> <br>
+        Enter Month (MM) : <input type="int" id="month"></inputtype>
+        <br> <br>
+        Enter Year (YYYY): <input type="int" id="year"></inputtype>
+        <br> <br>
+        Enter Time (HH:MM:SS) : <input type="str" id="time"></inputtype>
+        <br> <br>
+        <button onclick="countdown()">Time Left</button>
+        <hr>
+        <p id="output"></p>
+        <hr>
+    </center>
+</body>
 </html>
